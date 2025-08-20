@@ -28,7 +28,17 @@ inquirer_1.default
     console.log(`User description: ${answers.description}`);
     if (answers.description && answers.description.trim() !== '') {
         const commitMessage = `git commit -m "${answers.types} : ${answers.description.trim()}"`;
-        (0, child_process_1.exec)(commitMessage);
+        (0, child_process_1.exec)(commitMessage, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Error executing command: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.error(`Command error output: ${stderr}`);
+                return;
+            }
+            console.log(`Command output: ${stdout}`);
+        });
     }
     else {
         console.log("Put valid inputs");
