@@ -112,7 +112,7 @@ async function main() {
         });
     } catch (err: any) {
         if(err?.isTtyError){
-            console.log("Interactive prompt not supported in this environment")
+            console.log("interative prompt not supported in this environment")
         }
         else{
             console.log('Something went wrong', err?.message || err);
