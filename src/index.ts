@@ -1,8 +1,3 @@
-//1. prompt the user
-//2. test against the conventional commit message format
-//3. if the message is valid, proceed with the commit
-//4. if the message is invalid, prompt the user to enter a valid message
-
 import inquirer from 'inquirer';
 import { exec } from 'child_process';
 
