@@ -1,21 +1,37 @@
 {
-  "name": "everything",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^24.3.0",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "inquirer": "^12.9.3"
-  }
+    "name": "conventional-committer",
+    "version": "1.0.0",
+    "description": "A CLI tool for authoring Git commits that follow the Conventional Commits specification.",
+    "main": "dist/index.js",
+    "bin": {
+        "conventional-committer": "dist/index.js"
+    },
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "git",
+        "commit",
+        "conventional-commits",
+        "cli"
+    ],
+    "author": "",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codingashishdev/conventional-committer.git"
+    },
+    "bugs": {
+        "url": "https://github.com/codingashishdev/conventional-committer/issues"
+    },
+    "homepage": "https://github.com/codingashishdev/conventional-committer#readme",
+    "devDependencies": {
+        "@types/node": "^24.3.0",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "inquirer": "^12.9.3"
+    }
 }

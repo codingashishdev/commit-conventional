@@ -1,5 +1,9 @@
 # conventional-committer
 
+[![NPM version](https://img.shields.io/npm/v/conventional-committer.svg)](https://www.npmjs.com/package/conventional-committer)
+[![License](https://img.shields.io/npm/l/conventional-committer.svg)](https://github.com/wanony/conventional-committer/blob/main/LICENSE)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
 A CLI tool for authoring Git commits that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
 
 ## Features
@@ -39,6 +43,10 @@ npm install --save-dev conventional-committer
    - **Body**: Optional detailed description
    - **Breaking**: Mark if this is a breaking change
    - **Confirm**: Review and confirm the commit
+
+## Showcase
+
+![Conventional Committer Demo](https://via.placeholder.com/800x400.png?text=Conventional+Committer+In+Action)
 
 ## Commit Types
 
