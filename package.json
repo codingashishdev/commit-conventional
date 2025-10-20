@@ -4,12 +4,12 @@
     "description": "A CLI tool for authoring Git commits that follow the Conventional Commits specification.",
     "main": "dist/index.js",
     "bin": {
-        "conventional-committer": "dist/index.js"
+        "commit-conventional": "dist/index.js"
     },
     "scripts": {
         "build": "tsc",
         "start": "node dist/index.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "node dist/index.js --help"
     },
     "keywords": [
         "git",
@@ -17,7 +17,7 @@
         "conventional-commits",
         "cli"
     ],
-    "author": "",
+    "author": "wanony",
     "license": "ISC",
     "repository": {
         "type": "git",

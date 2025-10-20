@@ -5,6 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer_1 = __importDefault(require("inquirer"));
 const child_process_1 = require("child_process");
+const helpMessage = `
+Usage: npx commit-conventional
+
+Interactively create a conventional commit message.
+
+Options:
+  -h, --help    Show this help message.
+`;
 async function ensureStagedChanges() {
     const res = (0, child_process_1.spawnSync)("git", ["diff", "--cached", "--quiet"]);
     if (res.status == 0) {
@@ -25,10 +33,15 @@ function buildCommitMessage(a) {
     const breaking = a.breaking ? "!" : "";
     const header = `${a.type}${scopePart}${breaking}: ${a.subject.trim()}`;
     const body = a.body ? a.body.trim() : "";
-    return [header, body].filter(Boolean).join("\n\n");
+    const footer = a.breakingDescription ? `BREAKING CHANGE: ${a.breakingDescription.trim()}` : "";
+    return [header, body, footer].filter(Boolean).join("\n\n");
 }
 async function main() {
     try {
+        if (process.argv.includes("--help") || process.argv.includes("-h")) {
+            console.log(helpMessage);
+            process.exit(0);
+        }
         const proceed = await ensureStagedChanges();
         if (!proceed) {
             console.log("Aborted: no staged changes.");
@@ -61,7 +74,7 @@ async function main() {
             {
                 type: "input",
                 name: "subject",
-                message: "Shorted description (subject)",
+                message: "Short description (subject)",
                 validate: (input) => {
                     const value = input.trim();
                     if (!value)
@@ -83,7 +96,7 @@ async function main() {
                         {
                             type: "confirm",
                             name: "addBody",
-                            message: "Added detailed body?",
+                            message: "Add detailed body?",
                             default: false,
                         },
                     ]);
@@ -98,21 +111,34 @@ async function main() {
                 default: false,
             },
             {
+                type: "input",
+                name: "breakingDescription",
+                message: "Breaking change description",
+                when: (answers) => answers.breaking,
+                validate: (input) => {
+                    const value = input.trim();
+                    if (!value)
+                        return "Breaking change description is required.";
+                    return true;
+                },
+                filter: (v) => v.trim(),
+            },
+            {
                 type: "confirm",
                 name: "confirm",
-                message: "Create commit with above information?",
+                message: "Create commit?",
                 default: true,
             },
         ]);
         if (answers.confirm == false) {
-            console.log("Abored by the user. ");
+            console.log("Aborted by the user.");
             process.exit(1);
         }
         const message = buildCommitMessage(answers);
         const child = (0, child_process_1.spawn)("git", ["commit", "-m", message]);
         child.on("close", (code) => {
             if (code == 0) {
-                console.log("Commit created. ");
+                console.log("Commit created successfully.");
             }
             else {
                 console.log(`git commit exited with code ${code}`);
@@ -121,7 +147,7 @@ async function main() {
     }
     catch (err) {
         if (err?.isTtyError) {
-            console.log("interative prompt not supported in this environment");
+            console.log("Interactive prompt not supported in this environment");
         }
         else {
             console.log("Something went wrong", err?.message || err);

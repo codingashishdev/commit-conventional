@@ -1,7 +1,7 @@
-# conventional-committer
+# commit-conventional
 
-[![NPM version](https://img.shields.io/npm/v/conventional-committer.svg)](https://www.npmjs.com/package/conventional-committer)
-[![License](https://img.shields.io/npm/l/conventional-committer.svg)](https://github.com/wanony/conventional-committer/blob/main/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/commit-conventional.svg)](https://www.npmjs.com/package/commit-conventional)
+[![License](https://img.shields.io/npm/l/commit-conventional.svg)](https://github.com/codingashishdev/conventional-committer/blob/main/LICENSE)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 A CLI tool for authoring Git commits that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
@@ -19,12 +19,12 @@ A CLI tool for authoring Git commits that follow the [Conventional Commits](http
 
 ### Global Installation
 ```bash
-npm install -g conventional-committer
+npm install -g commit-conventional
 ```
 
 ### Local Installation
 ```bash
-npm install --save-dev conventional-committer
+npm install --save-dev commit-conventional
 ```
 
 ## Usage
@@ -32,9 +32,9 @@ npm install --save-dev conventional-committer
 1. Stage your changes with `git add`
 2. Run the tool:
    ```bash
-   npx conventional-committer
+   npx commit-conventional
    # or if installed globally
-   conventional-committer
+   commit-conventional
    ```
 3. Follow the interactive prompts:
    - **Type**: Select from conventional commit types (feat, fix, docs, etc.)
@@ -46,7 +46,17 @@ npm install --save-dev conventional-committer
 
 ## Showcase
 
-![Conventional Committer Demo](https://via.placeholder.com/800x400.png?text=Conventional+Committer+In+Action)
+```
+$ npx commit-conventional
+? Type (build, chore, ci, docs, feat, fix, perf, refactor, style, test)
+? Scope (optional) › auth
+? Short description (subject) › add user authentication system
+? Added detailed body? (y/N)
+? Breaking change? (y/N)
+? Create commit with above information? (Y/n)
+
+feat(auth): add user authentication system
+```
 
 ## Commit Types
 
