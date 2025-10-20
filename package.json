@@ -1,5 +1,5 @@
 {
-    "name": "conventional-committer",
+    "name": "commit-conventional",
     "version": "1.0.0",
     "description": "A CLI tool for authoring Git commits that follow the Conventional Commits specification.",
     "main": "dist/index.js",
